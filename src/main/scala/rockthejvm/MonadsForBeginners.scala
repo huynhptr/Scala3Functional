@@ -126,6 +126,16 @@ object MonadsForBeginners {
   val doubler = (x: Int) => List(x, 2 * x)
   
   def main(args: Array[String]): Unit = {
-    println(numbers.flatMap(incrementer).flatMap(doubler)) // List(1, 2, 2, 4,    2, 4, 3, 6,    3, 6, 4, 8)
+    println(numbers.flatMap(incrementer).flatMap(doubler)) 
+    // List(1, 2, 2, 4,    2, 4, 3, 6,    3, 6, 4, 8)
+    /*
+    List(
+      incrementer(1).flatMap(doubler) -- 1,2,2,4
+      incrementer(2).flatMap(doubler) -- 2,4,3,6
+      incrementer(3).flatMap(doubler) -- 3,6,4,8
+    )
+    
+    Monad(v).flatMap(f).flatMap(g) == Monad(v).flatMap(x => f(x).flatMap(g))
+     */
   }
 }
